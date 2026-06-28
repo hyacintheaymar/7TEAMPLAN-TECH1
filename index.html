@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7TeamPlan - Gestion d'équipes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Barre de navigation -->
-    <nav class="teams-nav">
+    <nav class="teams-nav" aria-label="Navigation principale">
         <div class="nav-logo">
-            <i class="fas fa-users"></i>
+            <div class="nav-logo-icon">
+                <i class="fas fa-users"></i>
+            </div>
             <span class="nav-text">7TeamPlan</span>
         </div>
         
@@ -43,7 +48,7 @@
                 <button class="nav-button" id="prev-week">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div id="current-week">Semaine du 6 au 12 janvier 2025</div>
+                <div id="current-week"></div>
                 <button class="nav-button" id="next-week">
                     <i class="fas fa-chevron-right"></i>
                 </button>
@@ -51,7 +56,7 @@
             
             <div class="view-actions">
                 <button class="teams-btn" id="add-assignment">
-                    <i class="fas fa-plus"></i> Nouvelle affectation
+                    <i class="fas fa-plus"></i> <span class="btn-text">Nouvelle affectation</span>
                 </button>
                 <div class="color-toggle">
                     <button class="toggle-btn active" data-mode="department">
@@ -66,10 +71,14 @@
         
         <!-- Vues -->
         <div id="calendar-view" class="view active-view">
-            <!-- Calendrier -->
+            <div class="page-header">
+                <h2>Calendrier</h2>
+                <p>Planifiez et visualisez les affectations de vos équipes</p>
+            </div>
             <div class="calendar-container">
-                <div class="calendar-header">
-                    <div class="time-label">Heures</div>
+                <div class="calendar-scroll">
+                    <div class="calendar-header">
+                        <div class="time-label">Heures</div>
                     <div class="day-header">
                         <div class="day-name">Lundi</div>
                         <div class="day-date">6</div>
@@ -103,11 +112,15 @@
                 <div class="calendar-grid" id="calendar-grid">
                     <!-- Rempli par JavaScript -->
                 </div>
+                </div>
             </div>
         </div>
         
         <div id="employees-view" class="view">
-            <h2>Gestion des employés</h2>
+            <div class="page-header">
+                <h2>Gestion des employés</h2>
+                <p>Ajoutez et gérez les membres de votre organisation</p>
+            </div>
             <div class="employee-management">
                 <div class="employee-form">
                     <h3>Ajouter un employé</h3>
@@ -136,7 +149,10 @@
         </div>
         
         <div id="teams-view" class="view">
-            <h2>Gestion des équipes</h2>
+            <div class="page-header">
+                <h2>Gestion des équipes</h2>
+                <p>Créez des équipes et assignez des membres</p>
+            </div>
             <div class="team-management">
                 <div class="team-form">
                     <h3>Créer une équipe</h3>
@@ -165,7 +181,10 @@
         </div>
         
         <div id="settings-view" class="view">
-            <h2>Paramètres</h2>
+            <div class="page-header">
+                <h2>Paramètres</h2>
+                <p>Personnalisez départements et préférences d'affichage</p>
+            </div>
             <div class="settings-container">
                 <div class="settings-group">
                     <h3>Gestion des départements</h3>
@@ -209,6 +228,28 @@
             </div>
         </div>
     </div>
+    
+    <div class="panel-overlay" id="panel-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav" aria-label="Navigation mobile">
+        <a href="#" class="nav-btn active" data-view="calendar" aria-label="Calendrier">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendrier</span>
+        </a>
+        <a href="#" class="nav-btn" data-view="employees" aria-label="Employés">
+            <i class="fas fa-user-friends"></i>
+            <span>Employés</span>
+        </a>
+        <a href="#" class="nav-btn" data-view="teams" aria-label="Équipes">
+            <i class="fas fa-layer-group"></i>
+            <span>Équipes</span>
+        </a>
+        <a href="#" class="nav-btn" data-view="settings" aria-label="Paramètres">
+            <i class="fas fa-cog"></i>
+            <span>Paramètres</span>
+        </a>
+    </nav>
     
     <!-- Panneau des employés -->
     <aside class="employee-panel" id="employee-panel">
